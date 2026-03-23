@@ -1,0 +1,149 @@
+/* ---------- Modal base ---------- */
+.mces-modal-overlay{
+  position:fixed; inset:0; display:none;
+  align-items:center; justify-content:center;
+  background:rgba(0,0,0,.6); z-index:99999;
+  padding:16px; overflow:auto;
+}
+body.mces-lock{ overflow:hidden !important; }
+
+.mces-modal{
+  width:min(92vw, 720px);
+  max-height:92vh; overflow:auto;
+  background:#fff; border-radius:14px;
+  box-shadow:0 18px 60px rgba(0,0,0,.28);
+  position:relative;
+}
+
+.mces-modal__close{
+  position:absolute; top:10px; right:12px;
+  width:36px; height:36px; border-radius:10px;
+  background:#fff; border:1px solid #e5e5e5; cursor:pointer;
+  font-size:22px; line-height:1;
+}
+.mces-modal__close:hover{ background:#fafafa; }
+
+.mces-modal__body{ padding:18px 18px 16px; }
+
+/* ---------- Estilos del formulario CF7 dentro del modal ---------- */
+.mces-modal .wpcf7 form{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+@media (max-width: 640px){
+  .mces-modal .wpcf7 form{ grid-template-columns:1fr; }
+}
+.mces-modal .wpcf7 form p{ margin:0; }
+.mces-modal .wpcf7 input[type="text"],
+.mces-modal .wpcf7 input[type="email"],
+.mces-modal .wpcf7 select,
+.mces-modal .wpcf7 textarea{
+  width:100%; padding:10px 12px; font-size:15px;
+  border:1px solid #d6d6d6; border-radius:10px; background:#fff;
+}
+.mces-modal .wpcf7 input:focus,
+.mces-modal .wpcf7 select:focus,
+.mces-modal .wpcf7 textarea:focus{
+  outline:2px solid rgba(200,29,90,.25); border-color:#c81d5a66;
+}
+.mces-modal .wpcf7 .row-span-2{ grid-column:1 / -1; }
+
+.mces-modal .wpcf7 input[type="submit"]{
+  background:#C81D5A; color:#fff; border:0;
+  padding:12px 16px; border-radius:10px; font-weight:600; cursor:pointer;
+}
+.mces-modal .wpcf7 input[type="submit"]:hover{ filter:brightness(.98); }
+
+/* Validaciones CF7 */
+.mces-modal .wpcf7-not-valid-tip{ margin-top:6px; color:#c0392b; font-size:12px; }
+.mces-modal .wpcf7 form .wpcf7-response-output{ margin:10px 0 0; border-radius:8px; font-size:13px; }
+
+/* Ocultar solo nuestros hidden/honeypot */
+.mces-hide{ display:none !important; }
+.mces-modal .wpcf7 input[type="hidden"][name^="ea_"]{ display:none !important; }
+
+/* Botón que abre el modal (si quieres un estilo base) */
+.mces-btn{ display:inline-block; padding:10px 16px; border-radius:10px; background:#111; color:#fff; text-decoration:none; }
+.mces-btn:hover{ filter: brightness(.95);
+  color: #fff;
+  transform: scale(.9); }
+
+
+/* ====== Paleta y tokens ====== */
+:root{
+  --mces-accent: #fe0000;
+  --mces-accent-dark: #A3164B;
+  --mces-text: #1d1d1f;
+  --mces-muted: #6b7280;
+  --mces-border: #d6d6d6;
+  --mces-error: #c0392b;
+}
+
+/* Modal */
+.mces-modal{ box-shadow: 0 22px 60px rgba(0,0,0,.28); }
+.mces-modal__close{
+  border: 1px solid var(--mces-border) !important;
+  color: var(--mces-text) !important;
+}
+.mces-modal__close:hover{ background:#fafafa !important; color: var(--mces-accent) !important; border-color: color-mix(in srgb, var(--mces-accent) 35%, white) !important; }
+
+/* Labels y texto */
+.mces-modal .wpcf7 form p label{ color: var(--mces-text) !important; font-weight:600;padding: 16px 0; }
+.mces-modal .wpcf7 .desc, .mces-modal .wpcf7 small{ color: var(--mces-muted) !important; }
+
+/* Inputs */
+.mces-modal .wpcf7 input[type="text"],
+.mces-modal .wpcf7 input[type="email"],
+.mces-modal .wpcf7 select,
+.mces-modal .wpcf7 textarea{
+  border: 1px solid var(--mces-border);
+  border-radius: 10px;
+  transition: border-color .15s ease, box-shadow .15s ease;
+  accent-color: var(--mces-accent); /* checkboxes/radios compatibles */
+}
+.mces-modal .wpcf7 input:focus,
+.mces-modal .wpcf7 select:focus,
+.mces-modal .wpcf7 textarea:focus{
+  outline: 0;
+  border-color: color-mix(in srgb, var(--mces-accent) 45%, white);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--mces-accent) 18%, transparent);
+}
+
+/* Estado error CF7 */
+.mces-modal .wpcf7-not-valid{ border-color: var(--mces-error) !important; }
+.mces-modal .wpcf7-not-valid-tip{ color: var(--mces-error); font-size:12px; margin-top:6px; }
+.mces-modal .wpcf7 form .wpcf7-response-output{
+  border-radius:8px; font-size:13px;
+}
+
+/* Botón principal */
+.mces-modal .wpcf7 input[type="submit"]{
+  background: var(--mces-accent);
+  border-radius: 10px;
+  color: #fff; font-weight:700;
+}
+.mces-modal .wpcf7 input[type="submit"]:hover{
+  background: var(--mces-accent-dark);
+  filter: none;
+}
+
+/* Checkbox de términos */
+.mces-modal .wpcf7-acceptance input[type="checkbox"]{
+  accent-color: var(--mces-accent);
+}
+
+.mces-modal .wpcf7 .row-span-2 strong{ font-size:20px; }
+
+
+
+.mces-modal__close:hover{ color: var(--mces-accent) !important; border-color: color-mix(in srgb, var(--mces-accent) 35%, white) !important; }
+
+
+a.mces-btn.mces-popup-open {
+  background-color: var(--e-global-color-text);
+  font-family: "determination-mono-web-font", Sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border-style: none;
+  border-radius: 5px 5px 5px 5px;
+}
