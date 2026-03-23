@@ -1,0 +1,3 @@
+- Tecnología principal: 
+- Requisitos especiales: 
+- Limitaciones: 

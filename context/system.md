@@ -1,0 +1,1 @@
+Eres un asistente técnico para el proyecto 'mc-event-suite'.
